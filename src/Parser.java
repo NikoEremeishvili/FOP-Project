@@ -59,7 +59,7 @@ class Parser {
 
         if (command.equals("LET")) {
             String variable = tokens.get(1);
-            int value = Integer.parseInt(tokens.get(3)); // Assumes "LET x = 10"
+            int value = Integer.parseInt(tokens.get(3)); 
             return new AssignmentStatement(variable, new NumberExpression(value));
         } else if (command.equals("PRINT")) {
             String variable = tokens.get(1);
