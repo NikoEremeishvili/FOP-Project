@@ -1,2 +1,24 @@
-LET X = 10
-PRINT X
+10 INPUT "Enter a number (N): ", N
+20 LET TOTAL = 0
+30 FOR COUNT = 1 TO N
+40     TOTAL = TOTAL + COUNT
+50 NEXT COUNT
+60 PRINT "Sum of the first "; N; " natural numbers is "; TOTAL
+
+
+10 INPUT "Enter a number (N): ", N
+20 LET RESULT = 1
+30 FOR INDEX = 1 TO N
+40     RESULT = RESULT * INDEX
+50 NEXT INDEX
+60 PRINT "Factorial of "; N; " is "; RESULT
+
+
+10 INPUT "Enter first number: ", NUM1
+20 INPUT "Enter second number: ", NUM2
+30 WHILE NUM2 <> 0
+40     LET REMAINDER = NUM1 MOD NUM2
+50     LET NUM1 = NUM2
+60     LET NUM2 = REMAINDER
+70 WEND
+80 PRINT "GCD is "; NUM1
