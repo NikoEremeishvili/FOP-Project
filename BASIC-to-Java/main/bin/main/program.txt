@@ -1,0 +1,2 @@
+LET X = 11
+PRINT X

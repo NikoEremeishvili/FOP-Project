@@ -1,0 +1,39 @@
+package main;
+import java.util.ArrayList;
+import java.util.List;
+
+
+public class Main {
+    public static void main(String[] args) {
+        // Instantiate the Tokenizer, Parser, and Executor
+        Tokenizer tokenizer = new Tokenizer();
+        Parser parser = new Parser();
+        Executor executor = new Executor();
+
+        // Input Tiny BASIC program
+        String code = """
+                      LET X = 10
+                      PRINT X
+                      """;
+
+        // Split the code into lines
+        String[] lines = code.split("\\n");
+
+        // Parse the program into a list of statements
+        List<Statement> program = new ArrayList<>();
+        for (String line : lines) {
+            // Tokenize the line
+            List<String> tokens = tokenizer.tokenize(line);
+
+            // Parse the tokens into a Statement object
+            Statement statement = parser.parse(tokens);
+
+            // Add the statement to the program
+            program.add(statement);
+        }
+
+        // Execute the program
+        executor.execute(program);
+    }
+}
+
