@@ -5,18 +5,15 @@ package interpreter.executor;
  * Represents a print statement, e.g., PRINT X.
  */
 public class PrintStatement implements Statement {
-    private String variableName;
+    private Expression expression;
 
-    public PrintStatement(String variableName) {
-        this.variableName = variableName;
+    public PrintStatement(Expression expression) {
+        this.expression = expression;
     }
 
     @Override
     public void execute(SymbolTable symbolTable) {
-        if (symbolTable.contains(variableName)) {
-            System.out.println(variableName + " = " + symbolTable.get(variableName));
-        } else {
-            throw new RuntimeException("Variable '" + variableName + "' is not defined.");
-        }
+        int value = expression.evaluate(symbolTable);
+        System.out.println(value);
     }
 }

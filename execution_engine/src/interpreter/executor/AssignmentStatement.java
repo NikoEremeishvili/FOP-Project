@@ -1,26 +1,27 @@
 package interpreter.executor;
 
 /**
- * Represents an assignment statement, e.g., LET X = 10.
+ * Represents an assignment statement, e.g., LET X = 10 or LET X = Y + 5.
  */
 public class AssignmentStatement implements Statement {
     private String variableName;
-    private int value;
+    private Expression expression;
 
     /**
      * Constructor for an assignment statement.
      * 
      * @param variableName The name of the variable.
-     * @param value        The value to assign.
+     * @param expression   The expression to evaluate and assign.
      */
-    public AssignmentStatement(String variableName, int value) {
+    public AssignmentStatement(String variableName, Expression expression) {
         this.variableName = variableName;
-        this.value = value;
+        this.expression = expression;
     }
 
     @Override
     public void execute(SymbolTable symbolTable) {
-        // Assign the value to the variable in the symbol table
+        // Evaluate the expression and assign the result to the variable
+        int value = expression.evaluate(symbolTable);
         symbolTable.set(variableName, value);
     }
 }
