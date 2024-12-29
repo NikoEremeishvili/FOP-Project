@@ -14,11 +14,22 @@ public class Main {
         Tokenizer tokenizer = new Tokenizer();
         Parser parser = new Parser();
 
-        //loops through each line of our inputed code
+        // Starting line number
+        int lineNumber = 10;
+
         for (String line : code.split("\n")) {
-            List<String> tokens = tokenizer.tokenize(line); // Tokenize
-            Statement statement = parser.parse(tokens); // Parse
-            System.out.println(statement); // Print
+            if (line.trim().isEmpty()) continue; // Skips empty lines
+
+            String numberedLine = lineNumber + " " + line;
+            lineNumber += 10; // Increments each line number
+
+            // Tokenizes and parses
+            List<String> tokens = tokenizer.tokenize(numberedLine);
+            Statement statement = parser.parse(tokens.subList(1, tokens.size()));
+
+            System.out.println(numberedLine);
         }
     }
 }
+
+
