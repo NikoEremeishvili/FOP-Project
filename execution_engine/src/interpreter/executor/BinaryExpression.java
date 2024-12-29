@@ -33,6 +33,18 @@ public class BinaryExpression extends Expression {
                 return leftValue / rightValue;
             case "%":
                 return leftValue % rightValue;
+            case "==":
+                return leftValue == rightValue ? 1 : 0;
+            case "!=":
+                return leftValue != rightValue ? 1 : 0;
+            case "<":
+                return leftValue < rightValue ? 1 : 0;
+            case "<=":
+                return leftValue <= rightValue ? 1 : 0;
+            case ">":
+                return leftValue > rightValue ? 1 : 0;
+            case ">=":
+                return leftValue >= rightValue ? 1 : 0;
             default:
                 throw new IllegalArgumentException("Unsupported operator: " + operator);
         }

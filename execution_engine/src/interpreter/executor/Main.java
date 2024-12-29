@@ -5,31 +5,31 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        // Create a list of statements for a simple program
+        // Create a SymbolTable and Executor
+        SymbolTable symbolTable = new SymbolTable();
+        Executor executor = new Executor();
+
+        // Define N = 5
         List<Statement> program = new ArrayList<>();
+        program.add(new AssignmentStatement("N", new NumberExpression(5)));
+        program.add(new AssignmentStatement("SUM", new NumberExpression(0)));
+        program.add(new AssignmentStatement("I", new NumberExpression(1)));
 
-        // LET X = 10
-        program.add(new AssignmentStatement("X", new NumberExpression(10)));
+        // WHILE I <= N DO SUM = SUM + I; I = I + 1
+        List<Statement> whileBody = new ArrayList<>();
+        whileBody.add(new AssignmentStatement("SUM", new BinaryExpression(
+            new VariableExpression("SUM"), new VariableExpression("I"), "+")));
+        whileBody.add(new AssignmentStatement("I", new BinaryExpression(
+            new VariableExpression("I"), new NumberExpression(1), "+")));
+        program.add(new WhileStatement(
+            new BinaryExpression(new VariableExpression("I"), new VariableExpression("N"), "<="),
+            whileBody
+        ));
 
-        // LET Y = X + 5
-        program.add(new AssignmentStatement("Y", new BinaryExpression(
-            new VariableExpression("X"), new NumberExpression(5), "+")));
-
-        // LET Z = Y * 2
-        program.add(new AssignmentStatement("Z", new BinaryExpression(
-            new VariableExpression("Y"), new NumberExpression(2), "*")));
-
-        // PRINT X
-        program.add(new PrintStatement(new VariableExpression("X")));
-
-        // PRINT Y
-        program.add(new PrintStatement(new VariableExpression("Y")));
-
-        // PRINT Z
-        program.add(new PrintStatement(new VariableExpression("Z")));
+        // PRINT SUM
+        program.add(new PrintStatement(new VariableExpression("SUM")));
 
         // Execute the program
-        Executor executor = new Executor();
         executor.execute(program);
     }
 }
