@@ -22,3 +22,33 @@
 60     LET NUM2 = REMAINDER
 70 WEND
 80 PRINT "GCD is "; NUM1
+
+
+10 INPUT "Enter a number: ", NUM
+20 LET REVERSED = 0
+30 WHILE NUM > 0
+40     DIGIT = NUM MOD 10
+50     REVERSED = REVERSED * 10 + DIGIT
+60     NUM = NUM \ 10
+70 WEND
+80 PRINT "Reversed number is "; REVERSED
+
+
+10 INPUT "Enter a number: ", NUM
+20 LET IS_PRIME = 1
+30 FOR DIV = 2 TO NUM \ 2
+40     IF NUM MOD DIV = 0 THEN LET IS_PRIME = 0
+50 NEXT DIV
+60 IF IS_PRIME THEN PRINT NUM; " is prime" ELSE PRINT NUM; " is not prime"
+
+
+10 INPUT "Enter a number: ", NUM
+20 LET ORIGINAL_NUM = NUM
+30 LET FLIPPED = 0
+40 WHILE NUM > 0
+50     DIGIT = NUM MOD 10
+60     FLIPPED = FLIPPED * 10 + DIGIT
+70     NUM = NUM \ 10
+80 WEND
+90 IF ORIGINAL_NUM = FLIPPED THEN PRINT "The number is a palindrome" ELSE PRINT "The number is not a palindrome"
+
