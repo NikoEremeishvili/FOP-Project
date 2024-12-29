@@ -1,6 +1,10 @@
-package interpreter.executor;
+package interpreter.statements;
 
 import java.util.List;
+
+import interpreter.core.Expression;
+import interpreter.core.Statement;
+import interpreter.execution.SymbolTable;
 
 public class WhileStatement implements Statement {
     private Expression condition;

@@ -1,5 +1,8 @@
-package interpreter.executor;
+package interpreter.statements;
 
+import interpreter.core.Expression;
+import interpreter.core.Statement;
+import interpreter.execution.SymbolTable;
 
 /**
  * Represents a print statement, e.g., PRINT X.

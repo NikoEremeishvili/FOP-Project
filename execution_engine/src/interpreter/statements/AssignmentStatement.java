@@ -1,4 +1,8 @@
-package interpreter.executor;
+package interpreter.statements;
+
+import interpreter.core.Expression;
+import interpreter.core.Statement;
+import interpreter.execution.SymbolTable;
 
 /**
  * Represents an assignment statement, e.g., LET X = 10 or LET X = Y + 5.

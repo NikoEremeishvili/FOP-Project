@@ -1,4 +1,8 @@
-package interpreter.executor;
+package interpreter.statements;
+
+import interpreter.core.Statement;
+import interpreter.execution.SymbolTable;
+import interpreter.core.Expression;
 
 import java.util.List;
 
@@ -13,11 +17,16 @@ public class IfStatement implements Statement {
 
     @Override
     public void execute(SymbolTable symbolTable) {
-        // Execute the body if the condition evaluates to true
-        if (condition.evaluate(symbolTable) != 0) {
+        int conditionValue = condition.evaluate(symbolTable);
+        System.out.println("Evaluating IF condition: " + conditionValue);
+
+        if (conditionValue != 0) { // Condition is true
+            System.out.println("Condition met, executing IF body...");
             for (Statement statement : body) {
                 statement.execute(symbolTable);
             }
+        } else {
+            System.out.println("Condition not met, skipping IF body...");
         }
     }
 

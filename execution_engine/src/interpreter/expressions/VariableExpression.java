@@ -1,5 +1,7 @@
-package interpreter.executor;
+package interpreter.expressions;
 
+import interpreter.core.Expression;
+import interpreter.execution.SymbolTable;
 
 /**
  * Represents a variable expression.

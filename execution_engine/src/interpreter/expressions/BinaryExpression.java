@@ -1,4 +1,7 @@
-package interpreter.executor;
+package interpreter.expressions;
+
+import interpreter.core.Expression;
+import interpreter.execution.SymbolTable;
 
 /**
  * Represents a binary arithmetic expression, e.g., X + Y or 10 * 5.
@@ -18,6 +21,7 @@ public class BinaryExpression extends Expression {
     public int evaluate(SymbolTable symbolTable) {
         int leftValue = left.evaluate(symbolTable);
         int rightValue = right.evaluate(symbolTable);
+        System.out.println("BinaryExpression: " + leftValue + " " + operator + " " + rightValue);
 
         switch (operator) {
             case "+":
