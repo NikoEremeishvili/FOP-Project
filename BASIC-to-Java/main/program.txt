@@ -52,3 +52,38 @@
 80 WEND
 90 IF ORIGINAL_NUM = FLIPPED THEN PRINT "The number is a palindrome" ELSE PRINT "The number is not a palindrome"
 
+
+10 INPUT "Enter a number: ", NUM
+20 LET LARGEST = 0
+30 WHILE NUM > 0
+40     DIGIT = NUM MOD 10
+50     IF DIGIT > LARGEST THEN LARGEST = DIGIT
+60     NUM = NUM \ 10
+70 WEND
+80 PRINT "Largest digit is "; LARGEST
+
+
+10 INPUT "Enter a number: ", NUM
+20 LET TOTAL_SUM = 0
+30 WHILE NUM > 0
+40     TOTAL_SUM = TOTAL_SUM + NUM MOD 10
+50     NUM = NUM \ 10
+60 WEND
+70 PRINT "Sum of digits is "; TOTAL_SUM
+
+
+10 INPUT "Enter a number: ", NUM
+20 FOR MULTIPLIER = 1 TO 10
+30     PRINT NUM; " x "; MULTIPLIER; " = "; NUM * MULTIPLIER
+40 NEXT MULTIPLIER
+
+
+10 INPUT "Enter the position (N): ", N
+20 LET FIRST = 0
+30 LET SECOND = 1
+40 FOR STEP = 2 TO N
+50     TEMP = FIRST + SECOND
+60     FIRST = SECOND
+70     SECOND = TEMP
+80 NEXT STEP
+90 PRINT "The "; N; "th Fibonacci number is "; SECOND
