@@ -1,2 +1,89 @@
-LET X = 10
-PRINT X
+10 INPUT "Enter a number (N): ", N
+20 LET TOTAL = 0
+30 FOR COUNT = 1 TO N
+40     TOTAL = TOTAL + COUNT
+50 NEXT COUNT
+60 PRINT "Sum of the first "; N; " natural numbers is "; TOTAL
+
+
+10 INPUT "Enter a number (N): ", N
+20 LET RESULT = 1
+30 FOR INDEX = 1 TO N
+40     RESULT = RESULT * INDEX
+50 NEXT INDEX
+60 PRINT "Factorial of "; N; " is "; RESULT
+
+
+10 INPUT "Enter first number: ", NUM1
+20 INPUT "Enter second number: ", NUM2
+30 WHILE NUM2 <> 0
+40     LET REMAINDER = NUM1 MOD NUM2
+50     LET NUM1 = NUM2
+60     LET NUM2 = REMAINDER
+70 WEND
+80 PRINT "GCD is "; NUM1
+
+
+10 INPUT "Enter a number: ", NUM
+20 LET REVERSED = 0
+30 WHILE NUM > 0
+40     DIGIT = NUM MOD 10
+50     REVERSED = REVERSED * 10 + DIGIT
+60     NUM = NUM \ 10
+70 WEND
+80 PRINT "Reversed number is "; REVERSED
+
+
+10 INPUT "Enter a number: ", NUM
+20 LET IS_PRIME = 1
+30 FOR DIV = 2 TO NUM \ 2
+40     IF NUM MOD DIV = 0 THEN LET IS_PRIME = 0
+50 NEXT DIV
+60 IF IS_PRIME THEN PRINT NUM; " is prime" ELSE PRINT NUM; " is not prime"
+
+
+10 INPUT "Enter a number: ", NUM
+20 LET ORIGINAL_NUM = NUM
+30 LET FLIPPED = 0
+40 WHILE NUM > 0
+50     DIGIT = NUM MOD 10
+60     FLIPPED = FLIPPED * 10 + DIGIT
+70     NUM = NUM \ 10
+80 WEND
+90 IF ORIGINAL_NUM = FLIPPED THEN PRINT "The number is a palindrome" ELSE PRINT "The number is not a palindrome"
+
+
+10 INPUT "Enter a number: ", NUM
+20 LET LARGEST = 0
+30 WHILE NUM > 0
+40     DIGIT = NUM MOD 10
+50     IF DIGIT > LARGEST THEN LARGEST = DIGIT
+60     NUM = NUM \ 10
+70 WEND
+80 PRINT "Largest digit is "; LARGEST
+
+
+10 INPUT "Enter a number: ", NUM
+20 LET TOTAL_SUM = 0
+30 WHILE NUM > 0
+40     TOTAL_SUM = TOTAL_SUM + NUM MOD 10
+50     NUM = NUM \ 10
+60 WEND
+70 PRINT "Sum of digits is "; TOTAL_SUM
+
+
+10 INPUT "Enter a number: ", NUM
+20 FOR MULTIPLIER = 1 TO 10
+30     PRINT NUM; " x "; MULTIPLIER; " = "; NUM * MULTIPLIER
+40 NEXT MULTIPLIER
+
+
+10 INPUT "Enter the position (N): ", N
+20 LET FIRST = 0
+30 LET SECOND = 1
+40 FOR STEP = 2 TO N
+50     TEMP = FIRST + SECOND
+60     FIRST = SECOND
+70     SECOND = TEMP
+80 NEXT STEP
+90 PRINT "The "; N; "th Fibonacci number is "; SECOND
