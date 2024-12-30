@@ -30,13 +30,24 @@ public class Main {
             return;
         }
 
-        // Tokenize the line
-        // List<String> tokens = tokenizer.tokenize(line);
+        // Prepare the program (list of statements)
+        List<Statement> program = new ArrayList<>();
+        for (String line : lines) {
+            try {
+                // Tokenize the line
+                List<String> tokens = tokenizer.tokenize(line);
 
-        // Parse the tokens into a Statement object
-        Statement statement = parser.parse(tokens);
-        // Add the statement to the program
-        program.add(statement);
+                // Parse the tokens into a Statement object
+                Statement statement = parser.parse(tokens);
+
+                // Add the statement to the program
+                program.add(statement);
+            } catch (Exception e) {
+                // Handle syntax errors and invalid statements
+                System.err.println("Syntax error in line: " + line);
+                System.err.println("Details: " + e.getMessage());
+            }
+        }
 
         try {
             // Execute the program and handle runtime errors
