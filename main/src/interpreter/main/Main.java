@@ -18,30 +18,35 @@ public class Main {
         Parser parser = new Parser();
         Executor executor = new Executor();
 
-        // Read the Tiny BASIC program from a file
+        // Specify the input file for the Tiny BASIC program
         String fileName = "program.txt";
         List<String> lines;
+
         try {
+            // Read all lines from the specified file
             lines = Files.readAllLines(Path.of(fileName));
         } catch (IOException e) {
             System.err.println("Error reading the file: " + e.getMessage());
             return;
         }
 
-        // Parse the program into a list of statements
-        List<Statement> program = new ArrayList<>();
-        for (String line : lines) {
-            // Tokenize the line
-            List<String> tokens = tokenizer.tokenize(line);
+        // Tokenize the line
+        // List<String> tokens = tokenizer.tokenize(line);
 
-            // Parse the tokens into a Statement object
-            Statement statement = parser.parse(tokens);
+        // Parse the tokens into a Statement object
+        Statement statement = parser.parse(tokens);
+        // Add the statement to the program
+        program.add(statement);
 
-            // Add the statement to the program
-            program.add(statement);
+        try {
+            // Execute the program and handle runtime errors
+            executor.execute(program);
+        } catch (Exception e) {
+            // Handle runtime errors like division by zero
+            System.err.println("Runtime error: " + e.getMessage());
         }
 
-        // Execute the program
-        executor.execute(program);
+        // Additional debug information for verification
+        System.out.println("Program execution completed.");
     }
 }
