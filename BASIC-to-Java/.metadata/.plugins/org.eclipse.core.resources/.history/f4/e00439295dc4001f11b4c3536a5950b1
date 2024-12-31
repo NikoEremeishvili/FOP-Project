@@ -1,5 +1,0 @@
-package interpreter.executor;
-
-public interface Statement {
-
-}
