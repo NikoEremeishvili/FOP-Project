@@ -21,13 +21,16 @@ public class ForStatement implements Statement {
 
     @Override
     public void execute(SymbolTable symbolTable) {
-        int start = startExpression.evaluate(symbolTable);
-        int end = endExpression.evaluate(symbolTable);
+        int start = startExpression.evaluate(symbolTable); // Get start value
+        int end = endExpression.evaluate(symbolTable); // Get end value
 
+        // Iterate over the range
         for (int i = start; i <= end; i++) {
-            symbolTable.set(variableName, i); // Assign current value to loop variable
+            symbolTable.set(variableName, i); // Update the loop variable in the symbol table
+
+            // Execute the loop body
             for (Statement statement : loopBody) {
-                statement.execute(symbolTable); // Execute loop body
+                statement.execute(symbolTable);
             }
         }
     }
