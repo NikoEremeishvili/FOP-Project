@@ -3,24 +3,35 @@ package interpreter.statements;
 import interpreter.core.Expression;
 import interpreter.core.Statement;
 import interpreter.execution.SymbolTable;
+import interpreter.expressions.StringExpression;
 
-/**
- * Represents a print statement, e.g., PRINT X.
- */
+import java.util.List;
+
 public class PrintStatement implements Statement {
-    private Expression expression;
+    private List<Expression> expressions;
 
-    public PrintStatement(Expression expression) {
-        this.expression = expression;
-    }
-    @Override
-    public String toString() {
-        return "PRINT " + expression;
+    public PrintStatement(List<Expression> expressions) {
+        this.expressions = expressions;
     }
 
     @Override
     public void execute(SymbolTable symbolTable) {
-        int value = expression.evaluate(symbolTable);
-        System.out.println(value);
+        StringBuilder output = new StringBuilder();
+
+        for (Expression expression : expressions) {
+            if (expression instanceof StringExpression) {
+                output.append(((StringExpression) expression).getValue());
+            } else {
+                output.append(expression.evaluate(symbolTable));
+            }
+            output.append(" "); // Add space between expressions
+        }
+
+        System.out.println(output.toString().trim());
+    }
+
+    @Override
+    public String toString() {
+        return "PRINT " + expressions;
     }
 }
